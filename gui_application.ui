@@ -134,7 +134,7 @@
    <widget class="QCommandLinkButton" name="commandLinkButton">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>410</x>
       <y>310</y>
       <width>51</width>
       <height>41</height>

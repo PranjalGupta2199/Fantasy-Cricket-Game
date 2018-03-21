@@ -56,7 +56,7 @@ class Ui_MainWindow(object):
         self.label_9.setGeometry(QtCore.QRect(830, 40, 79, 24))
         self.label_9.setObjectName(_fromUtf8("label_9"))
         self.commandLinkButton = QtGui.QCommandLinkButton(self.centralwidget)
-        self.commandLinkButton.setGeometry(QtCore.QRect(420, 310, 51, 41))
+        self.commandLinkButton.setGeometry(QtCore.QRect(410, 310, 51, 41))
         self.commandLinkButton.setText(_fromUtf8(""))
         self.commandLinkButton.setObjectName(_fromUtf8("commandLinkButton"))
         self.horizontalLayoutWidget = QtGui.QWidget(self.centralwidget)

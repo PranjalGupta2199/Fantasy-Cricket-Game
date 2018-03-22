@@ -10,10 +10,11 @@ except:
     print("the file doesn't exists.")
 
 
-cursor.execute('''CREATE TABLE app_data(player text, scored int, faced int,fours int,sixes int,bowled int,maiden int,given int,wkts int,catches int,stumping int,ro int,ctg text)''')
+cursor.execute('''CREATE TABLE app_data(player text, scored int, faced int,fours int,sixes int,bowled int,maiden int,given int,wkts int,catches int,stumping int,ro int, value int,ctg text)''')
 L = entry.split("\n")
 for t in range (1,16):
-    e = L[t].split(" ")
-    cursor.execute('INSERT INTO app_data VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)',e)
+    e = tuple(L[t].split(" "))
+
+    cursor.execute("INSERT INTO app_data VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", e)
 db.commit()
 cursor.close()

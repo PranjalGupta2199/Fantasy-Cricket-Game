@@ -81,6 +81,9 @@ class Ui_MainWindow(object):
         self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
         self.verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.listWidget = QtGui.QListWidget(self.verticalLayoutWidget)
+        self.listWidget.setObjectName(_fromUtf8("listWidget"))
+        self.verticalLayout.addWidget(self.listWidget)
         self.label_10 = QtGui.QLabel(self.centralwidget)
         self.label_10.setGeometry(QtCore.QRect(30, 100, 151, 24))
         self.label_10.setObjectName(_fromUtf8("label_10"))
@@ -98,12 +101,15 @@ class Ui_MainWindow(object):
         self.verticalLayoutWidget_2.setObjectName(_fromUtf8("verticalLayoutWidget_2"))
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
+        self.listWidget_2 = QtGui.QListWidget(self.verticalLayoutWidget_2)
+        self.listWidget_2.setObjectName(_fromUtf8("listWidget_2"))
+        self.verticalLayout_2.addWidget(self.listWidget_2)
         self.label_14 = QtGui.QLabel(self.centralwidget)
         self.label_14.setGeometry(QtCore.QRect(510, 150, 151, 24))
         self.label_14.setObjectName(_fromUtf8("label_14"))
-        self.label_15 = QtGui.QLabel(self.centralwidget)
-        self.label_15.setGeometry(QtCore.QRect(670, 150, 79, 24))
-        self.label_15.setObjectName(_fromUtf8("label_15"))
+        self.lineEdit = QtGui.QLineEdit(self.centralwidget)
+        self.lineEdit.setGeometry(QtCore.QRect(640, 140, 201, 36))
+        self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 894, 32))
@@ -135,16 +141,16 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
         self.label.setText(_translate("MainWindow", "Your Selections", None))
-        self.label_2.setText(_translate("MainWindow", "BATSMEN(BAT)", None))
+        self.label_2.setText(_translate("MainWindow", "BATSMEN(BAT) :", None))
         self.label_3.setText(_translate("MainWindow", "###", None))
-        self.label_4.setText(_translate("MainWindow", "Bowlers(BOW)", None))
+        self.label_4.setText(_translate("MainWindow", "Bowlers(BWL) :", None))
         self.label_5.setText(_translate("MainWindow", "###", None))
-        self.label_6.setText(_translate("MainWindow", "AllRounders (AR)", None))
+        self.label_6.setText(_translate("MainWindow", "AllRounders(AR) :", None))
         self.label_7.setText(_translate("MainWindow", "###", None))
-        self.label_8.setText(_translate("MainWindow", "Wicket-Keeper(WK)", None))
+        self.label_8.setText(_translate("MainWindow", "Wicket-Keeper(WK):", None))
         self.label_9.setText(_translate("MainWindow", "###", None))
         self.radioButton.setText(_translate("MainWindow", "BAT", None))
-        self.radioButton_2.setText(_translate("MainWindow", "BOW", None))
+        self.radioButton_2.setText(_translate("MainWindow", "BWL", None))
         self.radioButton_3.setText(_translate("MainWindow", "AR", None))
         self.radioButton_4.setText(_translate("MainWindow", "WK", None))
         self.label_10.setText(_translate("MainWindow", "Points Available ", None))
@@ -152,13 +158,121 @@ class Ui_MainWindow(object):
         self.label_12.setText(_translate("MainWindow", "###", None))
         self.label_13.setText(_translate("MainWindow", "Points Used", None))
         self.label_14.setText(_translate("MainWindow", "Team Name", None))
-        self.label_15.setText(_translate("MainWindow", "###", None))
         self.menuManage_TEam.setTitle(_translate("MainWindow", "Manage Team", None))
         self.actionNEW_Team.setText(_translate("MainWindow", "NEW Team", None))
         self.actionOPEN_Team.setText(_translate("MainWindow", "OPEN Team", None))
         self.actionSAVE_Team.setText(_translate("MainWindow", "SAVE Team", None))
         self.actionEVALUATE_Team.setText(_translate("MainWindow", "EVALUATE Team", None))
 
+
+        self.radioButton.toggled.connect(lambda:self.display_avail_number(Avail_batsman))
+        self.radioButton_2.toggled.connect(lambda:self.display_avail_number(Avail_bowler))
+        self.radioButton_4.toggled.connect(lambda:self.display_avail_number(Avail_WicketKeeper))
+        self.radioButton_3.toggled.connect(lambda:self.display_avail_number(Avail_Allrounder))
+        self.radiocount = 0
+
+
+        self.label_3.setText(str(len(Avail_batsman)))
+        self.label_5.setText(str(len(Avail_bowler)))
+        self.label_7.setText(str(len(Avail_Allrounder)))
+        self.label_9.setText(str(len(Avail_WicketKeeper)))
+
+        
+        #self.actionNEW_Team.triggered.connect(lambda:self.create_team("abc"))
+        #self.create_team("abc")
+        #self.commandLinkButton.connect(self.team.add_member(self.listWidget.currentItem()))
+
+
+    def display_avail_number(self,l):
+
+        self.listWidget.clear()
+        for i in range (len(l)):
+            #item = QListWidgetItem(l[i])
+            self.listWidget.addItem(l[i])
+            self.listWidget.show()
+        self.label_3.setText(str(len(Avail_batsman)))
+        self.label_5.setText(str(len(Avail_bowler)))
+        self.label_7.setText(str(len(Avail_Allrounder)))
+        self.label_9.setText(str(len(Avail_WicketKeeper)))
+
+    def create_team(self, text):
+        global Team
+        self.team = Team(text)
+
+
+
+import sqlite3
+db = sqlite3.connect("app.db")
+cursor = db.cursor()
+
+
+row = cursor.execute("SELECT * FROM app_data")
+
+Available_players = []
+Total_points = 1000
+player_points = {}
+
+Avail_batsman, Avail_bowler, Avail_Allrounder, Avail_WicketKeeper = [], [], [], []
+player_value = {}
+for row in cursor.execute("SELECT * FROM app_data"):
+    Available_players.append(row[0])
+    player_name,ctg = row[0],row[-1]
+    if (ctg == "BAT") : Avail_batsman.append(player_name)
+    elif (ctg == "BWL") : Avail_bowler.append(player_name)
+    elif (ctg == "AR") : Avail_Allrounder.append(player_name)
+    elif (ctg == "WK") : Avail_WicketKeeper.append(player_name)
+
+    #player_points[player_name] = calculate_points(row)
+    player_value[player_name] = row[-2]
+#print(player_value)
+
+
+class Team:
+
+    def __init__(self, name):
+        self.score = 1000
+        self.team_name = name
+        self.members = []
+
+    def add_member(self, player):
+        self.members.append(player)
+        self.score -= player_value[player]
+        if self.score != 0:
+            self.score += player_value[player]
+            print("Can't add player")
+
+
+    def delete_member(self, player):
+        self.current_team.remove(player)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BAT, BWL, AR, WK = len(Avail_batsman), len(Avail_bowler), len(Avail_Allrounder), len(Avail_WicketKeeper)
 
 if __name__ == "__main__":
     import sys
@@ -168,4 +282,3 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-

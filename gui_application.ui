@@ -193,7 +193,11 @@
       <height>311</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout"/>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QListWidget" name="listWidget"/>
+     </item>
+    </layout>
    </widget>
    <widget class="QLabel" name="label_10">
     <property name="geometry">
@@ -256,7 +260,11 @@
       <height>311</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2"/>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QListWidget" name="listWidget_2"/>
+     </item>
+    </layout>
    </widget>
    <widget class="QLabel" name="label_14">
     <property name="geometry">
@@ -271,17 +279,14 @@
      <string>Team Name</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_15">
+   <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>150</y>
-      <width>79</width>
-      <height>24</height>
+      <x>640</x>
+      <y>140</y>
+      <width>201</width>
+      <height>36</height>
      </rect>
-    </property>
-    <property name="text">
-     <string>###</string>
     </property>
    </widget>
   </widget>

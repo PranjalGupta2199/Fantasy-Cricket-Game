@@ -1,17 +1,17 @@
-player scored faced fours sixes bowled maiden given wkts catches stumping ro ctg
-Kohli 102 98 8 2 0 0 0 0 0 0 1 BAT
-Yuvraj 12 20 1 0 48 O 36 1 0 0 0 BAT
-Rahane 49 75 3 0 0 0 0 0 1 0 0 BAT
-Dhawan 32 35 4 0 0 O 0 O 0 O 0 AR
-Dhoni 56 45 3 l 0 O 0 O 3 2 0 BAT
-Axar 8 4 2 0 48 2 35 1 0 0 0 BWL
-Pandya 42 36 3 3 30 O 25 O l 0 O BWL
-Jadeja 18 10 1 1 60 3 50 2 1 O 1 BWL
-Kedar 65 60 7 0 24 O 24 O 0 O 0 BWL
-Ashwin 23 42 3 0 6O 2 45 6 0 O 0 AR
-Umesh 0 O O 0 54 0 50 4 1 0 0 WK
-Bumrah O O O 0 6O 2 49 1 0 O 0 WK
-Bhuwaneshwar 15 12 2 0 6O 1 46 2 O O 0 AR
-Rohit 46 65 5 l 0 O 0 O 1 0 0 BAT
-Kartick 29 42 3 0 0 0 0 O 2 O 1 AR
+player scored faced fours sixes bowled maiden given wkts catches stumping ro value ctg
+Kohli 102 98 8 2 0 0 0 0 0 0 1 120 BAT
+Yuvraj 12 20 1 0 48 0 36 1 0 0 0 100 BAT
+Rahane 49 75 3 0 0 0 0 0 1 0 0 100 BAT
+Dhawan 32 35 4 0 0 0 0 0 0 0 0 85 AR
+Dhoni 56 45 3 1 0 0 0 0 3 2 0 75 AR
+Axar 8 4 2 0 48 2 35 1 0 0 0 100 BWL
+Pandya 42 36 3 3 30 0 25 0 1 0 0 75 BWL
+Jadeja 18 10 1 1 60 3 50 2 1 0 1 85 BWL
+Kedar 65 60 7 0 24 0 24 0 0 0 0 90 BWL
+Ashwin 23 42 3 0 60 2 45 6 0 0 0 100 AR
+Umesh 0 0 0 0 54 0 50 4 1 0 0 110 WK
+Bumrah 0 0 0 0 60 2 49 1 0 0 0 60 WK
+Bhuwaneshwar 15 12 2 0 60 1 46 2 0 0 0 75 AR
+Rohit 46 65 5 1 0 0 0 0 1 0 0 85 BAT
+Kartick 29 42 3 0 0 0 0 0 2 0 1 75 AR
 
